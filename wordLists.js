@@ -1,1 +1,0 @@
-testWords = ["lol", "hello", "whatever"];

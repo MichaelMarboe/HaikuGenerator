@@ -1,1 +1,2 @@
-console.log("hello world");
+import { testWords } from "./wordLists";
+console.log(testWords);
