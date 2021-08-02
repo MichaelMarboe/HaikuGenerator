@@ -1,0 +1,1 @@
+testWords = ["lol", "hello", "whatever"];
