@@ -1,3 +1,15 @@
+/*
+Work list:
+
+1 figure out linguistic structure for line 2 and 3
+2 create real word lists
+3 () for line2 and line3 OR one function for all with parameters (see comment in function line1)
+4 HTML - set up HTML for clickable words and buttons for line rerolls to enable single word and entire line rerolls
+5 add function rerollLine(lineNumber) to reroll an entire line (just use functions in 3) (might be a redundant function)
+6 add function rerollWord() to reroll a single word.  
+7 CSS - bit of styling and fade animations, fonts, scaling etc.
+*/
+
 //might be easier to work with lists in lists - ie verb list with 1 list per syllabe count
 const wordList1 = ["lol", "whatever", "hi", "fun", "mate", "second", "chair", "yolanda", "mountain", "eternal"];
 const wordList2 = ["chition", "clam", "clown", "fish", "cod", "coelacanth", "conch", "copepod", "coral", "crab", "current", "scuttlefish"];
