@@ -10,13 +10,18 @@ Work list:
 7 CSS - bit of styling and fade animations, fonts, scaling etc.
 */
 
-const oneSyllAdjective = ["cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
-const twoSyllAdjective = ["bare", "barren", "biting", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
+/*
 
-const oneSyllNoun = ["chill", "gust", "hat", "frost", "scarf", "fog", "sled", "mist", "mug", "sled", "snow", "stew"];
+*/
+
+const oneSyllAdjective = ["cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
+const twoSyllAdjective = ["bare", "barren", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
+
+const oneSyllNoun = ["chill", "man", "woman", "child", "girl", "boy", "gust", "hat", "frost", "scarf", "fog", "sled", "mist", "mug", "sled", "snow", "stew"];
 const twoSyllNoun = ["gale", "blanket", "candle", "chimney", "cocoa", "fire", "flakes", "hail", "gloves", "ice", "igloo", "indoors", "jacket", "lodge", "rain", "snowfall", "winter", "season"];
 
-const twoSyllVerb = ["freeze", "glare", "glisten", "jingle", "shiver", "sneeze", "snuggle", "waddle", "dispel", "unfold", "detain", "renew", "assert", "delay"]
+//Want to add more/your own? See note about adding verbs in README > EDITING GUIDE > 2 > Verbs.  
+const twoSyllVerb = ["freeze", "glare", "glisten", "jingle", "shiver", "sneeze", "snuggle", "waddle", "unfold", "detain", "renew", "assert", "delay", "abandon"]
 
 const randomWord = list => {
     let randomIndex = Math.floor(Math.random() * list.length);
@@ -24,39 +29,50 @@ const randomWord = list => {
     return randomWord;
 }
 
-const generateLine = lineNumber => {
-    if (lineNumber < 1 || lineNumber > 3) {
-        console.log("Please type a valid line number - 1, 2 or 3.");
-        return;
-    } 
+const generateLine1 = () => {
     let holder = [];
     //2A + 1N + 2V OR 1A + 2N + 2V
-    //might be better if an s is added. Added as a +s - but might not make sense when line2 is added.
-    //-s at random? Makes for more variation. 
-    if (lineNumber === 1) {
-        let randomOrder = Math.floor(Math.random() * 2);3
-        if (randomOrder === 0) {
-            holder.push(randomWord(twoSyllAdjective));
-            holder.push(randomWord(oneSyllNoun));
-            holder.push(randomWord(twoSyllVerb) + "s");
-        } else if (randomOrder === 1) {
-            holder.push(randomWord(oneSyllAdjective));
-            holder.push(randomWord(twoSyllNoun));
-            holder.push(randomWord(twoSyllVerb) + "s");
-        }
-        console.log(holder);
-        return holder;
-    } else if (lineNumber === 2) {
+    let randomOrder = Math.floor(Math.random() * 4);
+    if (randomOrder === 0) {
+        holder.push(randomWord(twoSyllAdjective));
+        holder.push(randomWord(oneSyllNoun));
+        holder.push(randomWord(twoSyllVerb) + "s");
+    } else if (randomOrder === 1) {
+        holder.push(randomWord(oneSyllAdjective));
+        holder.push(randomWord(twoSyllNoun));
+        holder.push(randomWord(twoSyllVerb) + "s");
+    } else if (randomOrder === 2) {
+        holder.push(continuousVerb(twoSyllVerb));
+        holder.push(randomWord(oneSyllAdjective));
+        holder.push(randomWord(twoSyllNoun));
+    } else if (randomOrder === 3) {
+        holder.push(continuousVerb(twoSyllVerb));
+        holder.push(randomWord(twoSyllAdjective));
+        holder.push(randomWord(oneSyllNoun));
+    }
+    console.log(holder);
+    return holder;
+}
 
-    } else if (lineNumber === 3) {
-
+//selects a verb at random from a given list and conjugates it to a continuous verb
+const continuousVerb = list => {
+    let randomIndex = Math.floor(Math.random() * list.length);
+    let verb = list[randomIndex];
+    let lastLetter = verb[verb.length - 1];
+    if (lastLetter === "e") {
+        conjugatedVerb = verb.slice(0, -1) + "ing";
+        return conjugatedVerb;
+    } else {
+        conjugatedVerb = verb + "ing";
+        return conjugatedVerb;
     }
 }
 
 //later: make so its called from user input and once at pageload of HTML
-generateLine(1);
+generateLine1();
 
 //make later - push from list to innerhtml and call inside roll functions
 const pushToDOM = list => {
 
 }
+
