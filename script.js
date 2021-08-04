@@ -10,10 +10,6 @@ Work list:
 7 CSS - bit of styling and fade animations, fonts, scaling etc.
 */
 
-/*
-
-*/
-
 const oneSyllAdjective = ["cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
 const twoSyllAdjective = ["bare", "barren", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
 
@@ -28,6 +24,13 @@ const randomWord = list => {
     let randomWord = list[randomIndex];
     return randomWord;
 }
+
+const randomWord = list => {
+    let randomIndex = Math.floor(Math.random() * list.length);
+    let randomWord = list[randomIndex];
+    return randomWord;
+}
+
 
 const generateLine1 = () => {
     let holder = [];
