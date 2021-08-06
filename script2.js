@@ -2,6 +2,7 @@
 
 replaceLine() replaces an entire line with a new, random sequence from lineXSequences[] - this is intentional.
 replaceWord() MUST replace a word with the same type of word as there
+REPLACELINE + CLEAR HTML somehow.
 
 */
 
@@ -54,7 +55,7 @@ const getRandomWordFrom = array => {
 const generateLine = lineNumber => {
     //reset of this array in order to update it
     repickReferences[lineNumber] = [];
-    let increment = 0;
+    let wordIncrement = 0;
     //separate for line reroll functionality
     if (lineNumber === 0){
         let randomIndex = Math.floor(Math.random()*line1Sequences.length);
@@ -95,17 +96,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 */
 
-const initialize = () => {,
-    let increment = 0;
+const initialize = () => {
+    let wordIncrement = 0;
+    let arrayIncrement = 0;
     generateLine(0);
     generateLine(1);
     generateLine(2);
     wordHolder.forEach(array => {
         array.forEach(word => {
-            console.log("word" + increment.toString());
-            document.getElementById("word" + increment.toString()).innerHTML = wordHolder[increment] + "";
-            increment++;
-            console.log(increment);
+            console.log(word);
+            //NAILED IT - now pushes to each #word in html, max of 10 words
+            document.getElementById("word" + wordIncrement.toString()).innerHTML = array[arrayIncrement] + "";
+            wordIncrement++;
+            arrayIncrement++;
+            if (arrayIncrement === array.length){
+                arrayIncrement = 0;
+            }
         })
     });
 }
