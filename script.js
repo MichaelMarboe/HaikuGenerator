@@ -1,15 +1,3 @@
-/*
-Work list:
-!!!
-1 figure out linguistic structure for line 2 and 3
-2 create real word lists
-3 () for line2 and line3 OR one function for all with parameters (see comment in function line1)
-4 HTML - set up HTML for clickable wor ds and buttons for line rerolls to enable single word and entire line rerolls
-5 add function rerollLine(lineNumber) to reroll an entire line (just use functions in 3) (might be a redundant function)
-6 add function rerollWord() to reroll a single word.  
-7 CSS - bit of styling and fade animations, fonts, scaling etc.
-*/
-
 //could conjugate - ish, y? no general rules...
 const adjectives1 = ["cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
 const adjectives2 = ["bare", "barren", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
@@ -70,10 +58,10 @@ const generateLine1 = () => {
         holder.push(randomContinuousVerb(verbs2));
         holder.push(randomWord(adjectives2));
         holder.push(randomWord(nouns1));
-    } else if (randomOrder === 4){
+    } else if (randomOrder === 4) {
         //line 1 and 3 are interchangeable
         return generateLine3();
-    }    
+    }
     console.log(holder);
     return holder;
 }
@@ -81,25 +69,25 @@ const generateLine1 = () => {
 const generateLine2 = () => {
     let holder = [];
     let randomOrder = Math.floor(Math.random() * 4);
-    if (randomOrder === 0){
+    if (randomOrder === 0) {
         holder.push(randomWord(adjectives1));
         holder.push(randomWord(conjunctions1));
         holder.push(randomContinuousVerb(verbs2));
         holder.push(randomWord(adverbs3));
     }
-    if (randomOrder === 1){
+    if (randomOrder === 1) {
         holder.push(randomWord(adjectives2));
         holder.push(randomWord(conjunctions1));
         holder.push(randomContinuousVerb(verbs2));
         holder.push(randomWord(adverbs2));
     }
-    if (randomOrder === 2){
+    if (randomOrder === 2) {
         holder.push(randomWord(verbs2) + "s");
         holder.push(randomWord(conjunctions1));
         holder.push(randomWord(verbs2) + "s");
         holder.push(randomWord(adverbs2));
     }
-    if (randomOrder === 3){
+    if (randomOrder === 3) {
         holder.push(randomContinuousVerb(verbs2));
         holder.push(randomWord(adverbs2));
         holder.push(randomContinuousVerb(verbs2));
@@ -113,19 +101,19 @@ const generateLine3 = () => {
     holder = [];
     let randomOrder = Math.floor(Math.random() * 4);
     console.log("line3 randomorder is " + randomOrder)
-    if (randomOrder === 0){
+    if (randomOrder === 0) {
         holder.push(randomWord(pronouns1));
         holder.push(randomWord(verbs1) + "s");
-        holder.push(randomWord(adverbs3));   
-    } else if (randomOrder === 1){
+        holder.push(randomWord(adverbs3));
+    } else if (randomOrder === 1) {
         holder.push(randomWord(adverbs2));
         holder.push(randomContinuousVerb(verbs2));
         holder.push(randomWord(nouns1));
-    } else if (randomOrder === 2){
+    } else if (randomOrder === 2) {
         holder.push(randomContinuousVerb(verbs2));
         holder.push(randomWord(conjunctions1));
         holder.push(randomWord(adverbs2));
-    } else if (randomOrder === 3){
+    } else if (randomOrder === 3) {
         return generateLine1();
     }
     console.log(holder);
@@ -139,6 +127,21 @@ let line3 = generateLine3();
 
 //make later - push from list to innerhtml and call inside roll functions
 
-document.getElementById("line1").innerHTML = "lol.";
+document.addEventListener("DOMContentLoaded", function (event) {
+    document.getElementById("line1").innerHTML = line1.join(" ");
+    document.getElementById("line2").innerHTML = line2.join(" ");
+    document.getElementById("line3").innerHTML = line3.join(" ");
+});
 
-console.log("hello");
+const rerollLine = lineNumber => {
+    if (lineNumber === 1){
+        line1 = generateLine1();
+        document.getElementById("line1").innerHTML = line1.join(" ");
+    } else if (lineNumber === 2){
+        line2 = generateLine2();
+        document.getElementById("line2").innerHTML = line2.join(" ");
+    } else if(lineNumber === 3){
+        line3 = generateLine3();
+        document.getElementById("line3").innerHTML = line3.join(" ");
+    }
+}
