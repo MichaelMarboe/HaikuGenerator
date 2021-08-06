@@ -10,10 +10,6 @@ Work list:
 7 CSS - bit of styling and fade animations, fonts, scaling etc.
 */
 
-/*
-
-*/
-
 const oneSyllAdjective = ["cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
 const twoSyllAdjective = ["bare", "barren", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
 
@@ -42,11 +38,11 @@ const generateLine1 = () => {
         holder.push(randomWord(twoSyllNoun));
         holder.push(randomWord(twoSyllVerb) + "s");
     } else if (randomOrder === 2) {
-        holder.push(continuousVerb(twoSyllVerb));
+        holder.push(randomContinuousVerb(twoSyllVerb));
         holder.push(randomWord(oneSyllAdjective));
         holder.push(randomWord(twoSyllNoun));
     } else if (randomOrder === 3) {
-        holder.push(continuousVerb(twoSyllVerb));
+        holder.push(randomContinuousVerb(twoSyllVerb));
         holder.push(randomWord(twoSyllAdjective));
         holder.push(randomWord(oneSyllNoun));
     }
@@ -55,7 +51,7 @@ const generateLine1 = () => {
 }
 
 //selects a verb at random from a given list and conjugates it to a continuous verb
-const continuousVerb = list => {
+const randomContinuousVerb = list => {
     let randomIndex = Math.floor(Math.random() * list.length);
     let verb = list[randomIndex];
     let lastLetter = verb[verb.length - 1];
@@ -75,4 +71,50 @@ generateLine1();
 const pushToDOM = list => {
 
 }
+/*
+const A1 = [1, "cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
+const A2 = [2, "bare", "barren", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
 
+const V1 = [1, "run", "walk", "go", "end", "talk", "chat", "sing", "yell", "wish", "act"];
+const V2 = [2, "freeze", "glare", "glisten", "jingle", "shiver", "sneeze", "snuggle", "waddle", "unfold", "detain", "renew", "assert", "delay", "abandon"];
+
+const allWords = [A1, A2, V1, V2];
+
+//returns a list with [syllablecount as int, word]
+const randomWord = list => {
+    function selectWord() {
+        let randomIndex = Math.floor(Math.random() * list.length);
+        //recurse if index is 0 
+        if (randomIndex === 0){
+            return selectWord();
+        } else {
+            return list[randomIndex];
+        } 
+    }
+    let holder = [list[0], selectWord()];
+    console.log(holder);
+    return holder;
+}
+
+//helper function
+const randomGlobalList = () => {
+    return Math.floor(Math.random() * allWords.length);
+}
+
+const generateLine = syllableCount => {
+    if (syllableCount !== 7){
+        console.log("Error - param syllableCount must be 5 or 7");
+        return;
+    }
+    let holder = [];
+    if (syllableCount === 7){
+        for (let i = syllableCount; i > 0; i--){
+            //push one random word from random list within allWords 
+            holder.push(randomWord(allWords[randomGlobalList()]));
+        }
+        console.log(holder);
+    }
+}
+
+generateLine(7);
+*/
