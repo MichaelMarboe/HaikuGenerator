@@ -1,3 +1,11 @@
+/* REMEMBER:
+
+replaceLine() replaces an entire line with a new, random sequence from lineXSequences[] - this is intentional.
+replaceWord() MUST replace a word with the same type of word as there
+
+*/
+
+
 const adjectives1 = ["adj2", "cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
 const adjectives2 = ["adj1", "bare", "barren", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
 const nouns1 = ["n1", "chill", "man", "woman", "child", "girl", "boy", "gust", "hat", "frost", "scarf", "fog", "sled", "mist", "mug", "sled", "snow", "stew"];
@@ -17,7 +25,10 @@ const line2Sequences = [[adjectives1, conjunctions1, verbs2, adverbs3], [adjecti
 const line3Sequences = [[pronouns1, verbs1, adverbs3], [adverbs2, verbs2, nouns1], [verbs2, conjunctions1, adverbs2]];
 
 let wordHolder = [[], [], []];
-let repickReferences = [];
+let repickReferences = [[], [], []];
+
+//used to replace a single word
+const allWords = [adjectives1, adjectives2, nouns1, nouns2, verbs1, verbs2, conjunctions1, adverbs2, adverbs3, pronouns1];
 
 //can be used both for replacing references and pushing to references initially
 //second is optional parameter, if used = will replace with array at given index
@@ -29,7 +40,6 @@ const pushToReferences = (array, replaceAtindex) => {
    } 
 }
 
-//to be called as foreach from array of arrays
 const getRandomWordFrom = array => {
     let randomIndex = Math.floor(Math.random()*array.length);
     //roll again if random index is 0
@@ -42,48 +52,64 @@ const getRandomWordFrom = array => {
 
 //conjugation issue...
 const generateLine = lineNumber => {
+    //reset of this array in order to update it
+    repickReferences[lineNumber] = [];
+    let increment = 0;
     //separate for line reroll functionality
-    if (lineNumber === 1){
+    if (lineNumber === 0){
         let randomIndex = Math.floor(Math.random()*line1Sequences.length);
         line1Sequences[randomIndex].forEach(nestedArray => {
             wordHolder[0].push(getRandomWordFrom(nestedArray));
+            repickReferences[2].push(nestedArray);
         })
-    } else if (lineNumber === 2){
+    } else if (lineNumber === 1){
         let randomIndex = Math.floor(Math.random()*line2Sequences.length);
         line2Sequences[randomIndex].forEach(nestedArray => {
             wordHolder[1].push(getRandomWordFrom(nestedArray));
+            repickReferences[2].push(nestedArray);
         })
-    } else if (lineNumber === 3){
+    } else if (lineNumber === 2){
         let randomIndex = Math.floor(Math.random()*line3Sequences.length);
-        console.log(randomIndex);
         line3Sequences[randomIndex].forEach(nestedArray => {
             wordHolder[2].push(getRandomWordFrom(nestedArray));
+            repickReferences[2].push(nestedArray);
         })
     }
 }
-generateLine(1);
-generateLine(2);
-generateLine(3);
 
-console.log("Before replacement: ")
-console.log(wordHolder);
-
-const replaceLine = index => {
-    //remove existing array items
-    wordHolder.splice(index, 1);
-    console.log(index);
-    //push new
-    //replace in DOM
+//clears content of passed line number from wordHolder and generates a new line 
+const replaceLine = lineNumber => {
+    wordHolder[lineNumber] = [];
+    generateLine(lineNumber);
+    document.getElementById("line"+lineNumber.toString()).innerHTML = wordHolder[lineNumber].join(" ");
 }
-
-replaceLine(1);
-console.log("After replacement: ");
-console.log(wordHolder);
 /*
-
 document.addEventListener("DOMContentLoaded", function (event) {
-    document.getElementById("line1").innerHTML = wordHolder[0].join(" ");
-    document.getElementById("line2").innerHTML = wordHolder[1].join(" ");
-    document.getElementById("line3").innerHTML = wordHolder[2].join(" ");
+    generateLine(0);
+    generateLine(1);
+    generateLine(2);
+    //needs to be done from words individually somehow
+    document.getElementById("line0").innerHTML = wordHolder[0].join(" ");
+    document.getElementById("line1").innerHTML = wordHolder[1].join(" ");
+    document.getElementById("line2").innerHTML = wordHolder[2].join(" ");
 });
 */
+
+const initialize = () => {,
+    let increment = 0;
+    generateLine(0);
+    generateLine(1);
+    generateLine(2);
+    wordHolder.forEach(array => {
+        array.forEach(word => {
+            console.log("word" + increment.toString());
+            document.getElementById("word" + increment.toString()).innerHTML = wordHolder[increment] + "";
+            increment++;
+            console.log(increment);
+        })
+    });
+}
+
+const replaceWord = word => {
+    
+}
