@@ -2,8 +2,13 @@
 
 replaceLine() replaces an entire line with a new, random sequence from lineXSequences[] - this is intentional.
 replaceWord() MUST replace a word with the same type of word as there
-REPLACELINE + CLEAR HTML somehow.
 
+Worklist: 
+
+1. replaceWord() = pick from referencelists. 
+2. auto initialize?
+3. beautify; fix button positions, fix typography, colors, background image etc.
+4. fix wordlists, ie. conjugated words must be added and place in linesequences.
 */
 
 
@@ -55,82 +60,68 @@ const getRandomWordFrom = array => {
 const generateLine = lineNumber => {
     //reset of this array in order to update it
     repickReferences[lineNumber] = [];
+    wordHolder[lineNumber] = []
     let wordIncrement = 0;
     //separate for line reroll functionality
     if (lineNumber === 0){
+        clearLineDOM(0);
         let randomIndex = Math.floor(Math.random()*line1Sequences.length);
         line1Sequences[randomIndex].forEach(nestedArray => {
             wordHolder[0].push(getRandomWordFrom(nestedArray));
             repickReferences[0].push(nestedArray);
         })
+        pushLineToDOM(0);
     } else if (lineNumber === 1){
+        clearLineDOM(1);
         let randomIndex = Math.floor(Math.random()*line2Sequences.length);
         line2Sequences[randomIndex].forEach(nestedArray => {
             wordHolder[1].push(getRandomWordFrom(nestedArray));
             repickReferences[1].push(nestedArray);
         })
+        pushLineToDOM(1);
     } else if (lineNumber === 2){
+        clearLineDOM(2);
         let randomIndex = Math.floor(Math.random()*line3Sequences.length);
         line3Sequences[randomIndex].forEach(nestedArray => {
             wordHolder[2].push(getRandomWordFrom(nestedArray));
             repickReferences[2].push(nestedArray);
         })
+        pushLineToDOM(2);
     }
+    
 }
-
-//clears content of passed line number from wordHolder and generates a new line 
-const replaceLine = lineNumber => {
-    wordHolder[lineNumber] = [];
-    generateLine(lineNumber);
-    document.getElementById("line"+lineNumber.toString()).innerHTML = wordHolder[lineNumber].join(" ");
-}
-/*
-const initialize = () => {
-    let wordIncrement = 0;
-    let arrayIncrement = 0;
-    generateLine(0);
-    generateLine(1);
-    generateLine(2);
-    wordHolder.forEach(array => {
-        array.forEach(word => {
-            console.log(word);
-            document.getElementById("word" + wordIncrement.toString()).innerHTML = array[arrayIncrement] + "";
-            wordIncrement++;
-            arrayIncrement++;
-            if (arrayIncrement === array.length){
-                arrayIncrement = 0;
-            }
-        })
-    });
-}
-*/
 
 const replaceWord = word => {
     
 }
 
+//--- DOM FUNCTIONS ---
 
-//virker, er som et array
-document.addEventListener("DOMContentLoaded", function (event) {
-    const testList = document.getElementsByClassName("firstLine");
-    for (let i = 0; i < testList.length; i++){
-        testList[i].innerHTML = "lol";
+const clearLineDOM = lineNumber => {
+    let line = document.getElementsByClassName("line" + lineNumber.toString());
+    for (let i = 0; i < line.length; i++){
+        //blank space check - can't check against "undefined" so all <p> start with a space
+        if (line[i].innerHTML === " "){
+            return;
+        } else {
+            line[i].innerHTML = "";
+        }
     }
-});
+}
 
+const pushLineToDOM = lineNumber => {
+    let line = document.getElementsByClassName("line" + lineNumber.toString());
+    for (let i = 0; i < line.length; i++) {
+        if (wordHolder[lineNumber].length === i){
+            return;
+        }
+        line[i].innerHTML = wordHolder[lineNumber][i]; 
+    }
+}
+
+//this doubles as "reroll all button" (!!)
 const initialize = () => {
-    let lineIncrement = 0;
     generateLine(0);
     generateLine(1);
     generateLine(2);
-    wordHolder.forEach(array => {
-        let line = document.getElementsByClassName("line" + lineIncrement.toString());
-        for (let i = 0; i < array.length; i++){
-            line[i].innerHTML = wordHolder[lineIncrement][i];
-            if (i === array.length){
-                break;
-            }
-        }
-        lineIncrement++;
-    })
 };
