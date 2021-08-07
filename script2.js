@@ -1,16 +1,12 @@
-/* worK:
-2. auto initialize?
-3. beautify; fix button positions, fix typography, colors, background image etc.
-4. fix wordlists, ie. conjugated words must be added and place in linesequences.
-//change name of generatePoem button after first roll to > reroll
-*/
-
 /*
 These arrays hold all words that can be selected from. More words can be added easily.
 New word classes and conjugations can also be added easily - but, if new arrays (of word types/conjugations) are added, add the mew array(s) to allWords[] as well.
 NOTE: Numbers behind array names indicate syllable count in the words. Since Haiku is 5-7-5 syllables, it's important to separate them. 
+
+Work:
+Doublecheck syllables in each list manually...
 */
-//fix syllables
+
 const adjectives1 = ["cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
 const adjectives2 = ["bare", "barren", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
 
@@ -34,7 +30,8 @@ const conjunctions1 = ["and", "but"];
 const adverbs2 = ["always", "almost", "tightly", "warmly", "weakly", "briefly", "fairly", "dimly", "mostly", "truly"];
 const adverbs3 = ["lively", "happily", "hastily", "restfully", "busily", "evenly", "playfully", "rarely", "cruelly", "fatally", "lazily", "knowingly"];
 
-const pronouns1 = ["he", "she", "they", "it"];
+const singularPronouns1 = ["he", "she", "it"];
+const pluralPronouns1 = ["they", "we"];
 
 /*
 Sequences of words can be added here. Possible sequences are predefined, NOT random.  
@@ -50,15 +47,18 @@ const line1Sequences = [
 ];
 
 const line2Sequences = [
-    [adjectives1, conjunctions1, verbs2, adverbs3], 
-    [adjectives2, conjunctions1, verbs2, adverbs2], 
+    [adjectives1, conjunctions1, continuousVerbs2, adverbs3], 
+    [adjectives2, conjunctions1, continuousVerbs2, adverbs2], 
     [continuousVerbs2, conjunctions1, continuousVerbs2, adverbs2], 
-    [verbs2, adverbs2, verbs2, adjectives1]];
+    [continuousVerbs2, adverbs2, continuousVerbs2, adjectives1], 
+    [pluralNouns2, continuousVerbs2, conjunctions1, continuousVerbs2]
+];
 
 const line3Sequences = [
-    [pronouns1, verbs1, adverbs3], 
+    [singularPronouns1, singularVerbs1, adverbs3], 
     [adverbs2, verbs2, nouns1], 
-    [verbs2, conjunctions1, adverbs2]
+    [continuousVerbs2, conjunctions1, continuousVerbs2],
+    [pluralPronouns1, verbs2, adverbs2]
 ];
 
 /* 
@@ -72,7 +72,7 @@ Necessary for search function that replaces a single word with a word from the o
 See function: replaceWord(wordNumber) 
 */
 const allWords = [adjectives1, adjectives2, nouns1, nouns2, verbs1, verbs2, conjunctions1, adverbs2, adverbs3, 
-    pronouns1, continuousVerbs2, continuousVerbs1, singularVerbs1, singularVerbs2, pluralNouns1, pluralNouns2];
+    singularPronouns1, continuousVerbs2, continuousVerbs1, singularVerbs1, singularVerbs2, pluralNouns1, pluralNouns2, pluralPronouns1];
 
 /*
 Returns a random word from a passed array.
@@ -116,13 +116,21 @@ const generateLine = lineNumber => {
 1. Search through allWords[...] to find the array that holds the word (from the innerHTML) on the passed line. 
 2. When a match is found in an array, replace with a word from this array and stop. 
 */
-const replaceWord = (wordNumber) => {
+const replaceWord = wordNumber => {
     let wordString = document.getElementById("word"+wordNumber.toString()).innerHTML;
     allWords.forEach(array => {
         if (array.indexOf(wordString) != -1){
-            wordString = getRandomWordFrom(array);
-            document.getElementById("word" + wordNumber.toString()).innerHTML = getRandomWordFrom(array);
-            return;
+            let newWord = getRandomWordFrom(array);
+            //Recursion if random word is identical to existing word
+            //Only works if both words are explicitly converted to string and loop exited explicitly with return 
+            if (newWord.toString() === wordString.toString()){
+                console.log("rerolling");
+                replaceWord(wordNumber);
+                return;
+            } else {
+                document.getElementById("word" + wordNumber.toString()).innerHTML = newWord;
+                return;
+            }
         }
     });
 }
