@@ -107,10 +107,12 @@ const generateLine = lineNumber => {
 */
 const replaceWord = (wordNumber) => {
     let wordString = document.getElementById("word"+wordNumber.toString()).innerHTML;
+    console.log("ReplaceWord Launched");
     allWords.forEach(array => {
-        if (array.indexOf(wordString) >= 1){
+        if (array.indexOf(wordString) != -1){
             wordString = getRandomWordFrom(array);
             document.getElementById("word" + wordNumber.toString()).innerHTML = getRandomWordFrom(array);
+            console.log("Word Replaced");
             return;
         }
     });
