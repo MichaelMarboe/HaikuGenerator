@@ -61,13 +61,13 @@ const generateLine = lineNumber => {
         let randomIndex = Math.floor(Math.random()*line1Sequences.length);
         line1Sequences[randomIndex].forEach(nestedArray => {
             wordHolder[0].push(getRandomWordFrom(nestedArray));
-            repickReferences[2].push(nestedArray);
+            repickReferences[0].push(nestedArray);
         })
     } else if (lineNumber === 1){
         let randomIndex = Math.floor(Math.random()*line2Sequences.length);
         line2Sequences[randomIndex].forEach(nestedArray => {
             wordHolder[1].push(getRandomWordFrom(nestedArray));
-            repickReferences[2].push(nestedArray);
+            repickReferences[1].push(nestedArray);
         })
     } else if (lineNumber === 2){
         let randomIndex = Math.floor(Math.random()*line3Sequences.length);
@@ -85,17 +85,6 @@ const replaceLine = lineNumber => {
     document.getElementById("line"+lineNumber.toString()).innerHTML = wordHolder[lineNumber].join(" ");
 }
 /*
-document.addEventListener("DOMContentLoaded", function (event) {
-    generateLine(0);
-    generateLine(1);
-    generateLine(2);
-    //needs to be done from words individually somehow
-    document.getElementById("line0").innerHTML = wordHolder[0].join(" ");
-    document.getElementById("line1").innerHTML = wordHolder[1].join(" ");
-    document.getElementById("line2").innerHTML = wordHolder[2].join(" ");
-});
-*/
-
 const initialize = () => {
     let wordIncrement = 0;
     let arrayIncrement = 0;
@@ -105,7 +94,6 @@ const initialize = () => {
     wordHolder.forEach(array => {
         array.forEach(word => {
             console.log(word);
-            //NAILED IT - now pushes to each #word in html, max of 10 words
             document.getElementById("word" + wordIncrement.toString()).innerHTML = array[arrayIncrement] + "";
             wordIncrement++;
             arrayIncrement++;
@@ -115,7 +103,34 @@ const initialize = () => {
         })
     });
 }
+*/
 
 const replaceWord = word => {
     
 }
+
+
+//virker, er som et array
+document.addEventListener("DOMContentLoaded", function (event) {
+    const testList = document.getElementsByClassName("firstLine");
+    for (let i = 0; i < testList.length; i++){
+        testList[i].innerHTML = "lol";
+    }
+});
+
+const initialize = () => {
+    let lineIncrement = 0;
+    generateLine(0);
+    generateLine(1);
+    generateLine(2);
+    wordHolder.forEach(array => {
+        let line = document.getElementsByClassName("line" + lineIncrement.toString());
+        for (let i = 0; i < array.length; i++){
+            line[i].innerHTML = wordHolder[lineIncrement][i];
+            if (i === array.length){
+                break;
+            }
+        }
+        lineIncrement++;
+    })
+};

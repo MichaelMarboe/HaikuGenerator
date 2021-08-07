@@ -145,3 +145,24 @@ const rerollLine = lineNumber => {
         document.getElementById("line3").innerHTML = line3.join(" ");
     }
 }
+
+/*
+const initialize = () => {
+    let wordIncrement = 0;
+    let arrayIncrement = 0;
+    generateLine(0);
+    generateLine(1);
+    generateLine(2);
+    wordHolder.forEach(array => {
+        array.forEach(word => {
+            console.log(word);
+            document.getElementById("word" + wordIncrement.toString()).innerHTML = array[arrayIncrement] + "";
+            wordIncrement++;
+            arrayIncrement++;
+            if (arrayIncrement === array.length){
+                arrayIncrement = 0;
+            }
+        })
+    });
+}
+*/
