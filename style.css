@@ -1,3 +1,54 @@
+#holder{
+    margin-left:30%;
+    margin-right:25%;
+    margin-top:5%;
+    width:50%;
+}
+p{
+    color:white;
+}
+
+body {
+    font-family:'Courier New', Courier, monospace;
+    background-color:rgb(0, 0, 0);
+    margin: 3%;
+}
+
+button {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    background-color:black;
+    width: 20%;
+    border-color:white;
+    font-size:medium;
+    margin:0.5%;
+}
+
+h1 {
+    margin: 0.5%;
+    color:white;
+    font-weight:bold;
+}
 .line0, .line1, .line2{
+    margin: 0.5%;
+    margin-bottom: 2%;
+    margin-top:2%;
     display: inline-block;
+    font-size: large;
+    color:white;
+    text-align: center;
+}
+
+.rerollLine {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+
+#reroll {
+    margin-top:2%;
+    height:100%;
+    width:50%;
 }

@@ -14,11 +14,20 @@ NOTE: Numbers behind array names indicate syllable count in the words. Since Hai
 const adjectives1 = ["cold", "crisp", "dark", "gray", "harsh", "long", "numb", "wet"];
 const adjectives2 = ["bare", "barren", "bitter", "bleak", "chilling", "clear", "drafty", "foggy", "frigid", "frosty", "frozen", "hazy", "melting", "wet", "white", "windy"];
 
-const nouns1 = ["chill", "man", "woman", "child", "girl", "boy", "gust", "hat", "frost", "scarf", "fog", "sled", "mist", "mug", "sled", "snow", "stew"];
-const nouns2 = ["gale", "blanket", "candle", "chimney", "cocoa", "fire", "flakes", "hail", "glove", "ice", "igloo", "indoors", "jacket", "lodge", "rain", "snowfall", "winter", "season"];
+const nouns1 = ["chill", "man", "child", "girl", "boy", "gust", "hat", "frost", "scarf", "fog", "mist", "mug", "sled", "snow", "stew"];
+const nouns2 = ["woman", "gale", "blanket", "candle", "chimney", "cocoa", "fire", "flake", "hail", "glove", "ice", "igloo", "indoors", "jacket", "lodge", "rain", "snowfall", "winter", "season"];
+
+const pluralNouns1 = ["chills", "men", "children", "girls", "boys", "gusts", "hats", "scarfs", "mugs", "sleds", "snow", "stews"];
+const pluralNouns2 = ["children", "women", "gales", "blankets", "candles", "chimneys", "cocoas", "fires", "flakes", "igloos", "jackets", "lodges", "winters", "seasons"];
 
 const verbs1 = ["walk", "run", "see", "call", "know", "say", "play"]
 const verbs2 = ["freeze", "glare", "glisten", "jingle", "shiver", "sneeze", "snuggle", "waddle", "unfold", "renew", "assert", "delay", "abandon"];
+
+const continuousVerbs1 = ["walking", "running", "seeing", "calling", "knowing", "saying", "playing"];
+const continuousVerbs2 = ["freezing", "glaring", "jingling", "sneezing", "snuggling", "waddling", "dying", "living", "rotting", "melting", "sitting", "howling", "loving"];
+
+const singularVerbs1 = ["walks", "runs", "sees", "calls", "knows", "says", "plays"]
+const singularVerbs2 = ["freezes", "glares", "glistens", "jingles", "shivers", "sneezes", "snuggles", "waddles", "unfolds", "renews", "asserts", "delays", "abandons"];
 
 const conjunctions1 = ["and", "but"];
 
@@ -32,16 +41,18 @@ Sequences of words can be added here. Possible sequences are predefined, NOT ran
 These are all syntactically correct, but there's room for more. Note that sentences may still be nonsensical albeit syntactically possible. That's poetry!
 */
 const line1Sequences = [
-    [adjectives2, nouns1, verbs2], 
-    [adjectives1, nouns2, verbs2], 
-    [verbs2, adjectives1, nouns2], 
-    [verbs2, adjectives2, nouns1]
+    [adjectives2, nouns1, continuousVerbs2], 
+    [adjectives2, pluralNouns1, continuousVerbs2], 
+    [adjectives1, nouns2, continuousVerbs2], 
+    [adjectives1, pluralNouns2, continuousVerbs2], 
+    [continuousVerbs2, adjectives1, nouns2], 
+    [continuousVerbs2, adjectives2, nouns1]
 ];
 
 const line2Sequences = [
     [adjectives1, conjunctions1, verbs2, adverbs3], 
     [adjectives2, conjunctions1, verbs2, adverbs2], 
-    [verbs2, conjunctions1, verbs2, adverbs2], 
+    [continuousVerbs2, conjunctions1, continuousVerbs2, adverbs2], 
     [verbs2, adverbs2, verbs2, adjectives1]];
 
 const line3Sequences = [
@@ -60,7 +71,8 @@ const wordHolder = [[], [], []];
 Necessary for search function that replaces a single word with a word from the origin array.
 See function: replaceWord(wordNumber) 
 */
-const allWords = [adjectives1, adjectives2, nouns1, nouns2, verbs1, verbs2, conjunctions1, adverbs2, adverbs3, pronouns1];
+const allWords = [adjectives1, adjectives2, nouns1, nouns2, verbs1, verbs2, conjunctions1, adverbs2, adverbs3, 
+    pronouns1, continuousVerbs2, continuousVerbs1, singularVerbs1, singularVerbs2, pluralNouns1, pluralNouns2];
 
 /*
 Returns a random word from a passed array.
@@ -143,10 +155,17 @@ const pushLineToDOM = lineNumber => {
 Doubles as an initializer and as total reroll button. 
 Clears all lines and rerolls sequences and words.  
 */
+let firstRoll = false;
 const rollAllLines = () => {
+    if (firstRoll === false){
+        firstRoll = true;
+        document.getElementById("reroll").innerHTML = "Reroll all lines";
+        let rerollButtons = document.getElementsByClassName("rerollLine");
+        for (let i = 0; i < rerollButtons.length; i++){
+            rerollButtons[i].classList.remove("hidden");    
+        }
+    }
     generateLine(0);
     generateLine(1);
     generateLine(2);
 };
-
-console.log(window["line1Sequences"]);

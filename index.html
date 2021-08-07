@@ -6,31 +6,36 @@
 </head>
 
 <body>
-    <h1>Winter Haiku Generator</h1>
-    <div>
-        <p class="line0" onclick="replaceWord(0)" id="word0"> </p>
-        <p class="line0" onclick="replaceWord(1)" id="word1"> </p>
-        <p class="line0" onclick="replaceWord(2)" id="word2"> </p>
-        <p class="line0" onclick="replaceWord(3)" id="word3"> </p>
-    </div>
-    <div>
-        <p class="line1" onclick="replaceWord(4)" id="word4"> </p>
-        <p class="line1" onclick="replaceWord(5)" id="word5"> </p>
-        <p class="line1" onclick="replaceWord(6)" id="word6"> </p>
-        <p class="line1" onclick="replaceWord(7)" id="word7"> </p>
-    </div>
-    <div>
-        <p class="line2" onclick="replaceWord(8)" id="word8"> </p>
-        <p class="line2" onclick="replaceWord(9)" id="word9"> </p>
-        <p class="line2" onclick="replaceWord(10)" id="word10"> </p>
-        <p class="line2" onclick="replaceWord(11)" id="word11"> </p>
-        <p class="line2" onclick="replaceWord(12)" id="word12"> </p>
-    </div>
-    <button onclick="generateLine(0)">Reroll line1</button>
-    <button onclick="generateLine(1)">Reroll line2</button>
-    <button onclick="generateLine(2)">Reroll line3</button>
-    <div><button onclick="rollAllLines()">generate poem</button></div>
-    <button onclick="replaceWord(1)">replaceWord</button>
+    <div id="holder">
+        <h1>Winter Haiku Generator</h1>
+        <!--Blank space in every <p> is intentional - used in functions to find elements.-->
+        <div>
+            <button id="reroll" onclick="rollAllLines()">Generate poem</button>
+            <p class="rerollLine hidden">Don't like a specific word? Click it. :-)</p>
+        </div>
+            
+        <div>
+            <button class="rerollLine hidden" onclick="generateLine(0)">Reroll</button>
+            <p class="line0" onclick="replaceWord(0)" id="word0"> </p>
+            <p class="line0" onclick="replaceWord(1)" id="word1"> </p>
+            <p class="line0" onclick="replaceWord(2)" id="word2"> </p>
+            <p class="line0" onclick="replaceWord(3)" id="word3"> </p>
+        </div>
+        <div>
+            <button class="rerollLine hidden" onclick="generateLine(1)">Reroll</button>
+            <p class="line1" onclick="replaceWord(4)" id="word4"> </p>
+            <p class="line1" onclick="replaceWord(5)" id="word5"> </p>
+            <p class="line1" onclick="replaceWord(6)" id="word6"> </p>
+            <p class="line1" onclick="replaceWord(7)" id="word7"> </p>
+        </div>
+        <div>
+            <button class="rerollLine hidden" onclick="generateLine(2)">Reroll</button>
+            <p class="line2" onclick="replaceWord(8)" id="word8"> </p>
+            <p class="line2" onclick="replaceWord(9)" id="word9"> </p>
+            <p class="line2" onclick="replaceWord(10)" id="word10"> </p>
+            <p class="line2" onclick="replaceWord(11)" id="word11"> </p>
+        </div> 
+    </div>   
 </body>
 
 <footer>
