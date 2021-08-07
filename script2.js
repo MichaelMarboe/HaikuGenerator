@@ -75,8 +75,7 @@ Generates and replaces an entire line of words based on predefined word sequence
 */  
 const generateLine = lineNumber => {
     //Reset the array within wordHolder[] that holds the given line.
-    wordHolder[lineNumber] = []
-    //could be shorter - but how do you pick sequences?
+    wordHolder[lineNumber] = [];
     if (lineNumber === 0){
         clearLineDOM(0);
         let randomIndex = Math.floor(Math.random()*line1Sequences.length);
@@ -107,12 +106,10 @@ const generateLine = lineNumber => {
 */
 const replaceWord = (wordNumber) => {
     let wordString = document.getElementById("word"+wordNumber.toString()).innerHTML;
-    console.log("ReplaceWord Launched");
     allWords.forEach(array => {
         if (array.indexOf(wordString) != -1){
             wordString = getRandomWordFrom(array);
             document.getElementById("word" + wordNumber.toString()).innerHTML = getRandomWordFrom(array);
-            console.log("Word Replaced");
             return;
         }
     });
@@ -123,7 +120,7 @@ const replaceWord = (wordNumber) => {
 const clearLineDOM = lineNumber => {
     let line = document.getElementsByClassName("line" + lineNumber.toString());
     for (let i = 0; i < line.length; i++){
-        //blank space check - can't check against "undefined" so all <p> start with a space
+        //Blank space check - can't check against "undefined" so all <p> start with a space in DOM.
         if (line[i].innerHTML === " "){
             return;
         } else {
@@ -151,3 +148,5 @@ const rollAllLines = () => {
     generateLine(1);
     generateLine(2);
 };
+
+console.log(window["line1Sequences"]);
