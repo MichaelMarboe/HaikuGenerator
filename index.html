@@ -7,11 +7,7 @@
     <title>Haiku Generator</title>
 </head>
 
-<script>
-    $(document).ready(function(){
-        $("#pageTitle").fadeIn();    
-    });
-</script>
+
 
 <body>
     <header>
@@ -21,7 +17,7 @@
     <!--Blank space in every <p> is intentional - used in functions to find elements.-->
     <div id="holder">
         <div>
-            <button id="reroll" class="info" onclick="rollAllLines()">Generate poem</button>
+            <button id="reroll" class="info" onclick="rollAllLines()">Generate haiku</button>
             <p class="rerollLine hidden text info">Replace words by clicking them.</p>
         </div>
 
@@ -48,7 +44,14 @@
         </div>
     </div>
 </body>
-
+<script>
+    $(document).ready(function(){
+        $("body").hide();
+        $("body").fadeIn(1000);
+        $("p").fadeIn();
+        DOMReady = true;
+    });
+</script>
 <footer>
 
 </footer>

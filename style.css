@@ -1,6 +1,6 @@
 body{
     font-family: Quicksand; 
-    background-image:url(bgimg.jpg);
+    background-image:url(bgimg2.jpg);
     background-size:cover;
     background-repeat: no-repeat;
 }
@@ -10,10 +10,10 @@ div{
 }
 
 h1{
-    color:#0f1225;
+    color:black;
     font-weight: 500;
     margin:10px;
-    opacity: 0;
+    text-shadow: 2px 2px gray;
 }
 
 button{
@@ -33,6 +33,10 @@ button{
 
 button:hover{
     opacity: 0.5;
+}
+
+#reroll{
+    background-color: #1f8c58;
 }
 
 .line0, .line1, .line2{
@@ -60,7 +64,9 @@ button:hover{
 }
 
 hr{
-    border-color:#f1ece6;
+    height:2px;
+    border:none;
+    background-color: white;
 }
 
 .info{
