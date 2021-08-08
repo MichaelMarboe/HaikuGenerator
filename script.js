@@ -16,8 +16,7 @@ const pluralNouns2 = ["children", "women", "gales", "blankets", "candles", "chim
 const verbs1 = ["walk", "run", "see", "call", "know", "say", "play"]
 const verbs2 = ["freeze", "glare", "glisten", "jingle", "shiver", "sneeze", "snuggle", "waddle", "unfold", "renew", "assert", "delay", "abandon"];
 
-const continuousVerbs1 = ["walking", "running", "seeing", "calling", "knowing", "saying", "playing"];
-const continuousVerbs2 = ["freezing", "glaring", "jingling", "sneezing", "snuggling", "waddling", "dying", "living", "rotting", "melting", "sitting", "howling", "loving"];
+const continuousVerbs2 = ["walking", "running", "seeing", "calling", "knowing", "saying", "playing", "freezing", "glaring", "jingling", "sneezing", "snuggling", "waddling", "dying", "living", "rotting", "melting", "sitting", "howling", "loving", "falling", "mingling", "dancing"];
 
 const singularVerbs1 = ["walks", "runs", "sees", "calls", "knows", "says", "plays"]
 const singularVerbs2 = ["freezes", "glares", "glistens", "jingles", "shivers", "sneezes", "snuggles", "waddles", "unfolds", "renews", "asserts", "delays", "abandons"];
@@ -53,7 +52,7 @@ const line2Sequences = [
 
 const line3Sequences = [
     [singularPronouns1, singularVerbs1, adverbs3], 
-    [adverbs2, verbs2, nouns1], 
+    [adverbs2, continuousVerbs2, nouns1], 
     [continuousVerbs2, conjunctions1, continuousVerbs2],
     [pluralPronouns1, verbs2, adverbs2]
 ];
@@ -69,7 +68,7 @@ Necessary for search function that replaces a single word with a word from the o
 See function: replaceWord(wordNumber) 
 */
 const allWords = [adjectives1, adjectives2, nouns1, nouns2, verbs1, verbs2, conjunctions1, adverbs2, adverbs3, 
-    singularPronouns1, continuousVerbs2, continuousVerbs1, singularVerbs1, singularVerbs2, pluralNouns1, pluralNouns2, pluralPronouns1];
+    singularPronouns1, continuousVerbs2, singularVerbs1, singularVerbs2, pluralNouns1, pluralNouns2, pluralPronouns1];
 
 /*
 Returns a random word from a passed array.
@@ -121,7 +120,6 @@ const replaceWord = wordNumber => {
             //Recursion if random word is identical to existing word
             //Only works if both words are explicitly converted to string and loop exited explicitly with return 
             if (newWord.toString() === wordString.toString()){
-                console.log("rerolling");
                 replaceWord(wordNumber);
                 return;
             } else {
