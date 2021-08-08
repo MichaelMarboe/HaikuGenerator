@@ -13,6 +13,7 @@ h1{
     color:#0f1225;
     font-weight: 500;
     margin:10px;
+    opacity: 0;
 }
 
 button{

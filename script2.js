@@ -177,3 +177,4 @@ const rollAllLines = () => {
     generateLine(1);
     generateLine(2);
 };
+
