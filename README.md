@@ -40,6 +40,8 @@ A range of limitations and challenges still exist.
 
 ## Code information
 
+**The HTML - important:** The code relies on specific classes and ID's that are defined in the HTML. Be careful if you edit this document. In short, each word of the poems are different <p>'s and every line of the poem is its own <div>. They each carry ID's and classes that enable the script to target individual words and individual sentences.
+
 **Word arrays:** The code consists of a long list of arrays that contain different types of words with separate lists for conjunctions. New words can be added as strings to these arrays freely. The number at the end of each array name indicate syllable count - make sure you add them to the correct list if you want a proper haiku.
 
 **Sequence arrays:** The sequence arrays (for example, const line1Sequences = []) contain sequences of words as arrays. Each index holds a possible sequence of words as nested arrays of words that are later used to produce sentences with correct syntax. If you want to add another sequence of words here, you can freely add another array with word arrays as items. The order in which they appear here is the order in which they will appear in the DOM.
