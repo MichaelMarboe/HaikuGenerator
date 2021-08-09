@@ -1,6 +1,6 @@
 # Winter Haiku Generator
 
-The Winter Haiku Generator generates a random haiku poem with correct language syntax, adhering to the very simple rules of the Japanese haiku poem.
+The Winter Haiku Generator generates a random haiku poem with correct language syntax, adhering to the very simple rules of the Japanese haiku poem. [You can demo it here (not optimized for mobile/very small screens).](https://michaelmarboe.github.io/HaikuGenerator/)
 
 ## The haiku
 The haiku is a 3 line poem - no longer, no shorter. They are best known for their strict structure and their ability to paint vivid pictures with very few words. The 1st and 3rd has exactly 5 syllables of words, and the 2nd line has exactly 7 syllables of words.
