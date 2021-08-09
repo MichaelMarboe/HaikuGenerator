@@ -1,19 +1,20 @@
 # Winter Haiku Generator
 
-The Winter Haiku Generator generates a random haiku poem with correct language syntax.
+The Winter Haiku Generator generates a random haiku poem with correct language syntax, adhering to the very simple rules of the Japanese haiku poem.
 
-**Aim**
+**The haiku:**
+The haiku is a 3 line poem - no longer, no shorter. They are best known for their strict structure and their ability to paint vivid pictures with very few words. The 1st and 3rd has exactly 5 syllables of words, and the 2nd line has exactly 7 syllables of words.
 
-Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules are quite challenging.
+**Why:**
+I wrote it because I also do creative writing and I thought it'd be useful to have a generator that might be able to inspire novel and creative new ways to combine different types of words. In a way, the generator was conceived as a way to combat writer's block.
 
-This project aims to show and demonstrate one way to do it, albeit with a range of limitations. 
+**Aim:**
+Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules are quite challenging. The general aim was to invent a way to do it reliably and in such a way that new words and themes could easily be added. 
 
-**Theme(s)**
+**Theme(s):**
+The winter theme was adopted to decrease the scope of the project, but if new words are added to the possible selection, many other themes could be created. Additional words could easily be added as well, simply by typing them into the literal arrays in script.js.
 
-The winter theme was adopted to decrease the scope of the project, but if new words are added to the possible selection, many other themes could be created. Additional words could easily be added as well. 
-
-**Features**
-
+**Features:**
 A range of features are available. 
 
   1. Function to reroll every line of the poem - see rollAllLines() in script.js
@@ -21,12 +22,15 @@ A range of features are available.
   3. Function to reroll a single word (which will **not** reroll syntactical structure) - see replaceLine() in script.js
   4. Functions for DOM manipulation are also available - see clearLineDOM(), pushLineToDOM() in script.js
 
-**Possible additional features**
+**Possible additional features:**
 
-  1. Theme selector - a function to select another theme of words than winter. New word lists would be needed but many could be recycled. 
-  2. Functions to automatically conjugate words. Right now, conjugated forms of verbs are kept as separate word lists, but functions could be written. But, it will be challenging and some words might have to be excluded. 
+  1.**Theme selector:** Function to select another theme of words than winter. New word lists would be needed but many could be recycled. 
+  2. **Automatic conjugation:** Right now, conjugated forms of verbs are kept as separate word lists, but functions could be written. But, it will be challenging and some words might have to be excluded. 
+  3. 
 
-**Limitations**
+**Limitations & Challenges:**
+The generator does not concern with whether or not the generated senses are non-sensical or not. It aims to handle sentence syntax, not sense. This is both to reduce scope but also intentional - after all, it's poetry. :-)
+
 CHALLENGES: 
 
 Grammatical accuracy
