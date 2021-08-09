@@ -19,7 +19,7 @@ A range of features are available.
 
   1. Function to reroll every line of the poem - see rollAllLines() in script.js
   2. Function to reroll a single line of the poem (which will also reroll syntactical structure) - see generateLine() in script.js
-  3. Function to reroll a single word (which will **not** reroll syntactical structure) - see replaceLine() in script.js
+  3. Function to reroll a single word (which will **not** reroll syntactical structure) - see replaceWord() in script.js
   4. Functions for DOM manipulation are also available - see clearLineDOM(), pushLineToDOM() in script.js
 
 ## Possible additional features
