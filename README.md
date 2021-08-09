@@ -1,18 +1,29 @@
 # Winter Haiku Generator
 
-The Winter Haiku Generator generates a random haiku poem. Individual lines and words are replaceable. Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules are quite challenging.
+The Winter Haiku Generator generates a random haiku poem with correct language syntax.
 
-This project shows one way it can be done, albeit with a range of limitations.
+**Aim**
+Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules are quite challenging.
 
-**Theme**
+This project aims to show and demonstrate one way to do it, albeit with a range of limitations. 
+
+**Theme(s)**
 The winter theme was adopted to decrease the scope of the project, but if new words are added to the possible selection, many other themes could be created. Additional words could easily be added as well. 
 
+**Features**
+A range of features are available. 
 
-HAIKUS:
-Haikus consist of 3 lines of words, with a free amount of words producing exactly 5 syllables in the 1st line, 7 in the second and 5 in the last. 
+  1. Function to reroll every line of the poem - see rollAllLines() in script.js
+  2. Function to reroll a single line of the poem (which will also reroll syntactical structure) - see generateLine() in script.js
+  3. Function to reroll a single word (which will **not** reroll syntactical structure) - see replaceLine() in script.js
+  4. Functions for DOM manipulation are also available - see clearLineDOM(), pushLineToDOM() in script.js
 
-ABOUT THE CODE...
+**Possible additional features**
 
+  1. Theme selector - a function to select another theme of words than winter. New word lists would be needed but many could be recycled. 
+  2. Functions to automatically conjugate words. Right now, conjugated forms of verbs are kept as separate word lists, but functions could be written. But, it will be challenging and some words might have to be excluded. 
+
+**Limitations**
 CHALLENGES: 
 
 Grammatical accuracy
