@@ -58,4 +58,4 @@ The rest of the functions should be self-explanatory and are mostly helper funct
  
 ## Closing
 
-Hope you enjoy the haiku generator! If you want to do anything with it and want to collaborate, send me a message at michaelmarboe@gmail.com.
+Hope you enjoy the haiku generator! If you want to contact me about it, drop me a line.
