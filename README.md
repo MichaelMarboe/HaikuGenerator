@@ -40,27 +40,20 @@ A range of limitations and challenges still exist.
 
 ## Code information
 
-The code consists of a long list of arrays that contain different types of words with seperate lists for conjunctions.
+**Word arrays:** The code consists of a long list of arrays that contain different types of words with separate lists for conjunctions. New words can be added as strings to these arrays freely. The number at the end of each array name indicate syllable count - make sure you add them to the correct list if you want a proper haiku.
 
-CHALLENGES: 
+**Sequence arrays:** The sequence arrays (for example, const line1Sequences = []) contain sequences of words as arrays. Each index holds a possible sequence of words as nested arrays of words that are later used to produce sentences with correct syntax. If you want to add another sequence of words here, you can freely add another array with word arrays as items. The order in which they appear here is the order in which they will appear in the DOM.
 
-Grammatical accuracy
-Grammatical structure can't be completely accurate - it would make the project huge in scope, and each word would need a lot of additional information applied and many words would need extremely specific (and in some cases even individual) rulesets. For example, you can add an s to many nouns to make them plural but many nouns don't follow this rule. Similar variations occur across all types of words. Language is messy.
+**Search array:** The search array contains **every** word list. It is used for replacing individual words - see **Word replacer** below.
 
-Accuracy could be achieved by treating each word as an object with values that determine the conjugated forms of the word, but writing all these objects manually is more than I bargained for with this project. You'd have to sort through each word manually and determine it's rules or at least sort them and use constructor functions to generate lists of words (as objects instead of strings).
+**Line generator (generateLine(lineNumber)):** This functions is key. Shortly put, it takes a parameter of line number (0, 1 or 2). Then, it picks a random word sequence from the corresponding sequence arrays (line1sequences[], for example). From each nested array within the sequence array, it picks a random word and pushes the results in the correct order to the DOM.
 
-But I decided against it. Instead, I made each word clickable so any user could manually replace single words. 
+**Word replacer:** The word replacer (replaceWord(wordNumber)) replaces a single word on user mouse click input. It relies on the search array allWords[]. It takes a word as number parameter (for example 0, 3 or 7), pulls the word from the DOM as a string and searches the allWords[] array for this specific word. When the word is found, the word is replaced by a word from the same array (meaning the same type of word, for example a noun with 2 syllables). This way, the syntax of the sentence won't be altered and this function does not need any information about what words the line generator picked. If an identical word is selected at random, the function recurses.
 
-Variation
-The generator produces sentences with random words from lists. The combinations of words are predefined combinations of nouns, verbs and adjectives. Line 1, for example, can produce a sentence that consists of: A + N + V (Adjective + Noun + Verb)("bleak" + "man" + "shivers"). This produces a linguistically correct sequence of words. 
+The rest of the functions should be self-explanatory and are mostly helper functions that provide DOM functionality.  
 
-V + A + N is also possible, ie. "glaring chilly girl". A function (continuousVerb) is used to conjugate verbs to the -ing form. Only words that adhere to simple rules for conjugation can be conjugated correctly by this function. So, not every verb is acceptable, but the function is included because using this verb form randomly creates A LOT of variation in the possible sentence combinations.
+**Note:** The code must be run in a browser since it refers to the HTML object document - most terminals will produce an error message if you attempt to run ("missing object" or the like). 
+ 
+## Closing
 
-Editing guide:
-
-1) If you add more/your own words, it's important that you count the syllables and add them to the appropriate list - or the generator won't produce a correct haiku.
-2) Note that NOT ALL WORDS within their categories are acceptable. The rules are:
-
-Verbs: 
-If they end with e (freeze, for example) it must be possible to conjugate them correctly to the continuous form by removing the last letter of the word and adding -ing. For example: freeze > freez > freezing = "freeze" is acceptable.
-If they do not end with an e, they must be conjugatable to the continuous form by adding +ing. For example: renew + ing = renewing. "renew" is an acceptable verb. "ban" is not, as it would result in "baning" which is not a word.
+Hope you enjoy the haiku generator! If you want to do anything with it and want to collaborate, send me a message at michaelmarboe@gmail.com.
