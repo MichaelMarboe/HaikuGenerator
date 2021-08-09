@@ -3,14 +3,17 @@
 The Winter Haiku Generator generates a random haiku poem with correct language syntax.
 
 **Aim**
+
 Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules are quite challenging.
 
 This project aims to show and demonstrate one way to do it, albeit with a range of limitations. 
 
 **Theme(s)**
+
 The winter theme was adopted to decrease the scope of the project, but if new words are added to the possible selection, many other themes could be created. Additional words could easily be added as well. 
 
 **Features**
+
 A range of features are available. 
 
   1. Function to reroll every line of the poem - see rollAllLines() in script.js
