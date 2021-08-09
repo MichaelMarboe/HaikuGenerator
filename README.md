@@ -26,8 +26,7 @@ A range of features are available.
 
 These features would be cool to have and I plan to develop them if I ever have the time again.
 
-  1.Theme selector: Function to select another theme of words than winter. New word lists would be needed but many could be recycled. 
-  
+  1. Theme selector: Function to select another theme of words than winter. New word lists would be needed but many could be recycled. 
   2. Automatic conjugation: Right now, conjugated forms of verbs are kept as separate word lists, but functions could be written. But, it will be challenging and some words might have to be excluded. 
   3. Optional syntax selection: A feature to allow users to pass sequences of sentence syntax to the program, for example "Generate a sentence that has 1 verb, 2 adverbs and... in this order...". 
 
