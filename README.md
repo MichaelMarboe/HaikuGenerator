@@ -1,6 +1,12 @@
-# HaikuGenerator
+# Winter Haiku Generator
 
-For README:
+The Winter Haiku Generator generates a random haiku poem. Individual lines and words are replaceable. Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules are quite challenging.
+
+This project shows one way it can be done, albeit with a range of limitations.
+
+**Theme**
+The winter theme was adopted to decrease the scope of the project, but if new words are added to the possible selection, many other themes could be created. Additional words could easily be added as well. 
+
 
 HAIKUS:
 Haikus consist of 3 lines of words, with a free amount of words producing exactly 5 syllables in the 1st line, 7 in the second and 5 in the last. 
