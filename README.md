@@ -3,10 +3,7 @@
 The Winter Haiku Generator generates a random haiku poem with correct language syntax, adhering to the very simple rules of the Japanese haiku poem. [You can demo it here (not optimized for mobile/very small screens).](https://michaelmarboe.github.io/HaikuGenerator/)
 
 ## The haiku
-The haiku is a 3 line poem - no longer, no shorter. They are best known for their strict structure and their ability to paint vivid pictures with very few words. The 1st and 3rd has exactly 5 syllables of words, and the 2nd line has exactly 7 syllables of words.
-
-## Why
-I wrote it because I also do creative writing and I thought it'd be useful to have a generator that might be able to inspire novel and creative new ways to combine different types of words. In a way, the generator was conceived of as a way to combat writer's block but also just to practice advanced JavaScript.
+The haiku is a 3 line poem. They are best known for their strict structure and their ability to paint vivid pictures with very few words. The 1st and 3rd has exactly 5 syllables of words, and the 2nd line has exactly 7 syllables of words.
 
 ## Aim
 Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules are quite challenging. The general aim was to invent a way to do it reliably and in such a way that new words and themes could easily be added. 
@@ -15,7 +12,7 @@ Generating syntactically correct sentences randomly is far more difficult than i
 The winter theme was adopted to decrease the scope of the project, but if new words are added to the possible selection, many other themes could be created. Additional words could easily be added as well, simply by typing them into the literal arrays in script.js.
 
 ## Features
-A range of features are available. 
+Available features:
 
   1. Function to reroll every line of the poem - see rollAllLines() in script.js
   2. Function to reroll a single line of the poem (which will also reroll syntactical structure) - see generateLine() in script.js
@@ -24,7 +21,7 @@ A range of features are available.
 
 ## Possible additional features
 
-These features would be cool to have and I plan to develop them if I ever have the time again.
+These features would be cool to have and I plan to develop them if I ever have the time again:
 
   1. Theme selector: Function to select another theme of words than winter. New word lists would be needed but many could be recycled. 
   2. Automatic conjugation: Right now, conjugated forms of verbs are kept as separate word lists, but functions could be written. But, it will be challenging and some words might have to be excluded. 
@@ -32,15 +29,13 @@ These features would be cool to have and I plan to develop them if I ever have t
 
 ## Limitations & Challenges: 
 
-A range of limitations and challenges still exist. 
-
   1. The generator does not concern with whether or not the generated senses are non-sensical or not. It aims to handle sentence syntax, not sense. This is both to   reduce scope but also intentional - after all, it's poetry. :-)
   2. Currently, the generation of lines is limited by predefined syntax that has to be typed in manually in the code. This could be automated or at least made         simpler. 
   3. Syllables in words need to be counted before words are added to the arrays. This is quite a chore and there's a lot of room for error. 
 
 ## Code information
 
-**The HTML - important:** The code relies on specific classes and ID's that are defined in the HTML. Be careful if you edit this document. In short, each word of the poems are different <p>s and every line of the poem is its own <div>. They each carry ID's and classes that enable the script to target individual words and individual sentences.
+**The HTML - important:** The code relies on specific classes and ID's that are defined in the HTML. Be careful if you edit this document. In short, each word of the poems are different <p>s and every line of the poem is its own <div>. They each carry ID's and classes that enable the script to single out individual words and individual sentences.
 
 **Word arrays:** The code consists of a long list of arrays that contain different types of words with separate lists for conjungations of the same words. New words can be added as strings to these arrays freely. The number at the end of each array name indicate syllable count - make sure you add them to the correct list if you want a proper haiku.
 
