@@ -35,7 +35,7 @@ These features would be cool to have and I plan to develop them if I ever have t
 
 ## Code information
 
-**The HTML - important:** The code relies on specific classes and ID's that are defined in the HTML. Be careful if you edit this document. In short, each word of the poems are different <p>s and every line of the poem is its own <div>. They each carry ID's and classes that enable the script to single out individual words and individual sentences.
+**The HTML - important:** The code relies on specific classes and ID's that are defined in the HTML. Be careful if you edit this document. In short, each word of the poems are different paragraphs and every line of the poem is its own div. They each carry IDs and classes that enable the script to single out individual words and individual sentences.
 
 **Word arrays:** The code consists of a long list of arrays that contain different types of words with separate lists for conjungations of the same words. New words can be added as strings to these arrays freely. The number at the end of each array name indicate syllable count.
 
