@@ -6,7 +6,7 @@ The Winter Haiku Generator generates a random haiku poem with correct language s
 The haiku is a 3 line poem. They are best known for their strict structure and their ability to paint vivid pictures with very few words. The 1st and 3rd has exactly 5 syllables of words, and the 2nd line has exactly 7 syllables of words.
 
 ## Aim
-Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules are quite challenging. The general aim was to invent a way to do it reliably and in such a way that new words and themes could easily be added. 
+Generating syntactically correct sentences randomly is far more difficult than it seems - language is messy, exceptions to grammatical rules are plentiful and coding these rules is quite challenging. The general aim was to invent a way to do it reliably and in such a way that new words and themes could easily be added. 
 
 ## Theme(s)
 The winter theme was adopted to decrease the scope of the project, but if new words are added to the possible selection, many other themes could be created. Additional words could easily be added as well, simply by typing them into the literal arrays in script.js.
